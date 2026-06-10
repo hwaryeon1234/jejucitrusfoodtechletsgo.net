@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>제주감귤푸드테크랩스 | Jeju Citrus FoodTech Labs</title>
+<meta name="description" content="감귤과 푸드테크가 만나는 상상 속 연구 브랜드." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<style>
+  :root {
+    --bg: #FCFAF4;
+    --paper: #FFFFFF;
+    --ink: #1B3A6B;
+    --ink-soft: #2C4A6E;
+    --citrus: #F08A1E;
+    --citrus-deep: #D26312;
+    --citrus-light: #FBC777;
+    --leaf: #4FA34B;
+    --leaf-deep: #2D5A36;
+    --sea: #7CC3DF;
+    --brown: #8B5A2B;
+    --brown-deep: #6B4421;
+    --hairline: #E8E0CC;
+    --hairline-soft: #F2EBD8;
+    --max: 1180px;
+    --pad: clamp(20px, 4vw, 56px);
+    --font-ko: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+    --font-ja: "Noto Sans JP", "Pretendard Variable", sans-serif;
+    --font-zh: "Noto Sans SC", "Pretendard Variable", sans-serif;
+    --font-latin: "Inter", -apple-system, sans-serif;
+    --font: var(--font-ko);
+  }
+  html[lang="ja"] { --font: var(--font-ja); }
+  html[lang="zh"] { --font: var(--font-zh); }
+  html[lang="en"], html[lang="es"], html[lang="fr"] { --font: var(--font-latin); }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(237,126,30,0.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(74,155,73,0.05), transparent 45%);
+    pointer-events: none; z-index: 0;
+  }
+  main, header, footer { position: relative; z-index: 1; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  /* ───── NAV ───── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(251, 243, 226, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto;
+    padding: 14px var(--pad);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand-mark {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 800; font-size: 16px; letter-spacing: -0.01em;
+  }
+  .brand-mark .dot {
+    width: 28px; height: 28px;
+    background: radial-gradient(circle at 35% 35%, #FFCB7C, var(--citrus) 70%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset -3px -3px 6px rgba(201,94,18,0.3);
+    flex-shrink: 0;
+  }
+  .brand-mark .dot::after {
+    content: ""; position: absolute; inset: 4px;
+    border-radius: 50%;
+    background:
+      conic-gradient(from 0deg,
+        transparent 0 10deg, rgba(255,255,255,0.4) 10deg 12deg,
+        transparent 12deg 55deg, rgba(255,255,255,0.4) 55deg 57deg,
+        transparent 57deg 100deg, rgba(255,255,255,0.4) 100deg 102deg,
+        transparent 102deg 145deg, rgba(255,255,255,0.4) 145deg 147deg,
+        transparent 147deg 190deg, rgba(255,255,255,0.4) 190deg 192deg,
+        transparent 192deg 235deg, rgba(255,255,255,0.4) 235deg 237deg,
+        transparent 237deg 280deg, rgba(255,255,255,0.4) 280deg 282deg,
+        transparent 282deg 325deg, rgba(255,255,255,0.4) 325deg 327deg,
+        transparent 327deg 360deg);
+  }
+  .nav-right {
+    display: flex; align-items: center; gap: 24px;
+  }
+  .nav-links {
+    display: flex; gap: 24px;
+    font-size: 14px; font-weight: 500;
+  }
+  .nav-links a {
+    position: relative; padding: 4px 0;
+    transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 2px; background: var(--citrus);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--citrus-deep); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Language picker */
+  .lang {
+    position: relative;
+  }
+  .lang-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lang-btn:hover {
+    border-color: var(--citrus);
+    color: var(--citrus-deep);
+  }
+  .lang-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+  .lang[data-open="true"] .lang-btn svg { transform: rotate(180deg); }
+  .lang-menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    min-width: 160px;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 12px 28px -8px rgba(16,50,87,0.15);
+    opacity: 0; visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+  .lang[data-open="true"] .lang-menu {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  .lang-menu button {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .lang-menu button:hover { background: var(--bg); }
+  .lang-menu button[aria-current="true"] {
+    background: rgba(237,126,30,0.1);
+    color: var(--citrus-deep);
+    font-weight: 700;
+  }
+  .lang-menu .code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+  @media (max-width: 720px) {
+    .nav-links { gap: 14px; font-size: 12px; }
+    .nav-links a:nth-child(4) { display: none; }
+    .nav-right { gap: 12px; }
+  }
+  @media (max-width: 520px) {
+    .nav-links a:nth-child(3) { display: none; }
+    .brand-mark span:not(.dot) { font-size: 13px; }
+  }
+
+  /* ───── HERO ───── */
+  .hero {
+    padding: clamp(56px, 9vw, 120px) var(--pad) clamp(40px, 6vw, 80px);
+    max-width: var(--max); margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--citrus-deep);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 32px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ""; width: 24px; height: 1px; background: var(--citrus);
+  }
+  .hero h1 {
+    font-family: var(--font);
+    font-weight: 900;
+    font-size: clamp(36px, 7.5vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 16px;
+    word-break: keep-all;
+  }
+  .accent-orange { color: var(--citrus); }
+  .accent-green { color: var(--leaf); }
+  .accent-brown { color: var(--brown); }
+  .hero-en {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2.4vw, 26px);
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 12px 28px;
+    border: 1.5px solid var(--citrus);
+    border-radius: 999px;
+    background: rgba(255,251,241,0.6);
+    font-size: 15px; font-weight: 600;
+    color: var(--ink);
+    max-width: 95%;
+  }
+  .hero-tag .flower { color: var(--citrus); font-size: 14px; flex-shrink: 0; }
+  .hero-emblem {
+    margin: 56px auto 24px;
+    width: clamp(280px, 42vw, 460px);
+    aspect-ratio: 1;
+    position: relative;
+  }
+  .hero-emblem img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-emblem img { animation: none; }
+  }
+  .hero-slogan {
+    margin-top: 24px;
+    font-family: "Fraunces", serif;
+    font-size: clamp(17px, 2.2vw, 24px);
+    color: var(--leaf-deep);
+    font-weight: 500;
+  }
+
+  /* ───── SECTION COMMON ───── */
+  section.block {
+    padding: clamp(56px, 9vw, 120px) var(--pad);
+    max-width: var(--max); margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+  .section-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--citrus-deep);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-weight: 900;
+    font-size: clamp(30px, 5vw, 56px);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    word-break: keep-all;
+  }
+  .section-en {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: clamp(15px, 2vw, 20px);
+  }
+
+  /* ───── ABOUT ───── */
+  .about-intro {
+    max-width: 720px; margin: 0 auto clamp(48px, 6vw, 72px);
+    text-align: center;
+    font-size: clamp(15px, 1.6vw, 19px);
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .pillar {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 32px 28px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -12px rgba(16,50,87,0.12);
+  }
+  .pillar::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--citrus);
+  }
+  .pillar:nth-child(2)::before { background: var(--leaf); }
+  .pillar:nth-child(3)::before { background: var(--sea); }
+  .pillar-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--citrus-deep);
+    margin-bottom: 8px;
+  }
+  .pillar:nth-child(2) .pillar-label { color: var(--leaf-deep); }
+  .pillar:nth-child(3) .pillar-label { color: var(--sea); }
+  .pillar h3 {
+    font-size: 22px; font-weight: 800;
+    margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .pillar p {
+    color: var(--ink-soft);
+    font-size: 15px; line-height: 1.7;
+  }
+  .keyword-row {
+    margin-top: 16px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .kw {
+    font-size: 12px; font-weight: 500;
+    padding: 4px 10px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    background: rgba(255,251,241,0.5);
+  }
+
+  /* ───── RESEARCH ───── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .research-card {
+    background: var(--paper);
+    padding: clamp(28px, 3.5vw, 40px) clamp(24px, 3vw, 32px);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  .research-card:hover { background: #FFFEF6; }
+  .research-num {
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--citrus);
+    margin-bottom: 20px;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .research-num::after {
+    content: ""; flex: 1; height: 1px;
+    background: var(--hairline);
+    margin-bottom: 10px;
+  }
+  .research-card:nth-child(2) .research-num { color: var(--leaf); }
+  .research-card:nth-child(3) .research-num { color: var(--sea); }
+  .research-card:nth-child(4) .research-num { color: var(--citrus-deep); }
+  .research-card h3 {
+    font-size: clamp(19px, 2.4vw, 26px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .research-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .research-card .tag-en {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+    opacity: 0.7;
+  }
+
+  /* ───── STORY ───── */
+  .story-list {
+    display: grid; gap: 14px;
+    max-width: 820px; margin: 0 auto;
+  }
+  .story-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 22px 28px;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    align-items: center;
+  }
+  .story-row:nth-child(odd) { border-left: 3px solid var(--citrus); }
+  .story-row:nth-child(even) { border-left: 3px solid var(--leaf); }
+  .story-label {
+    font-weight: 800;
+    font-size: 15px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .story-label .icon {
+    width: 22px; height: 22px; flex-shrink: 0;
+    display: inline-grid; place-items: center;
+    border-radius: 50%;
+    background: var(--citrus-light);
+    font-size: 11px;
+  }
+  .story-row:nth-child(even) .story-label .icon { background: #B8DDB6; }
+  .story-content {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .story-content em { color: var(--citrus-deep); font-style: normal; font-weight: 600; }
+  .story-content strong { color: var(--citrus-deep); font-weight: 700; }
+  @media (max-width: 640px) {
+    .story-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 22px; }
+  }
+
+  /* ───── CONTACT ───── */
+  .contact-card {
+    max-width: 760px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--paper), #FFF8E6);
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    padding: clamp(36px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-seal {
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 220px; height: 220px;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(-8deg);
+  }
+  .contact-seal img { width: 100%; height: 100%; object-fit: contain; }
+  @media (max-width: 640px) {
+    .contact-seal { width: 160px; height: 160px; bottom: -20px; right: -20px; }
+  }
+  .contact-card::before {
+    content: ""; position: absolute;
+    width: 200px; height: 200px;
+    top: -60px; right: -60px;
+    background: radial-gradient(circle at 30% 30%, rgba(237,126,30,0.18), transparent 65%);
+    border-radius: 50%;
+  }
+  .contact-card::after {
+    content: ""; position: absolute;
+    width: 220px; height: 220px;
+    bottom: -80px; left: -80px;
+    background: radial-gradient(circle at 60% 50%, rgba(74,155,73,0.13), transparent 65%);
+    border-radius: 50%;
+  }
+  .contact-rows { position: relative; }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--hairline);
+    align-items: center;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-key {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--citrus-deep);
+    text-transform: uppercase;
+  }
+  .contact-val {
+    font-size: 15px;
+    color: var(--ink);
+    word-break: break-all;
+  }
+  .contact-val.mail { font-weight: 700; }
+  .contact-val.mail a { color: var(--citrus-deep); }
+  .contact-val.mail a:hover { text-decoration: underline; }
+  @media (max-width: 540px) {
+    .contact-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ───── FOOTER ───── */
+  footer {
+    margin-top: 80px;
+    background: var(--ink);
+    color: #DCE6F0;
+    padding: 56px var(--pad) 40px;
+  }
+  .foot-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+  .foot-brand {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--citrus-light);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .foot-message {
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 560px;
+    opacity: 0.85;
+  }
+  .foot-disclaimer {
+    font-size: 11px;
+    opacity: 0.55;
+    text-align: right;
+    line-height: 1.6;
+    font-family: "JetBrains Mono", monospace;
+  }
+  @media (max-width: 640px) {
+    .foot-inner { grid-template-columns: 1fr; }
+    .foot-disclaimer { text-align: left; }
+  }
+
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 8px 0;
+    color: var(--citrus); opacity: 0.7;
+  }
+  .divider::before, .divider::after {
+    content: ""; width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--citrus), transparent);
+  }
+  .divider svg { width: 14px; height: 14px; }
+
+  /* fade-in on language switch */
+  [data-i18n] { transition: opacity 0.2s; }
+  body.lang-switching [data-i18n] { opacity: 0; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand-mark">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-i18n="brand-short">제주감귤푸드테크랩스</span>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="primary">
+        <a href="#about" data-i18n="nav-about">About</a>
+        <a href="#research" data-i18n="nav-labs">Labs</a>
+        <a href="#story" data-i18n="nav-story">Story</a>
+        <a href="#news" data-i18n="nav-news">News</a>
+        <a href="#contact" data-i18n="nav-contact">Contact</a>
+      </nav>
+      <div class="lang" data-open="false">
+        <button class="lang-btn" type="button" aria-haspopup="true">
+          <span id="lang-current">KO</span>
+          <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="lang-menu" role="menu">
+          <button type="button" data-lang="ko" aria-current="true"><span>한국어</span><span class="code">KO</span></button>
+          <button type="button" data-lang="en"><span>English</span><span class="code">EN</span></button>
+          <button type="button" data-lang="ja"><span>日本語</span><span class="code">JA</span></button>
+          <button type="button" data-lang="zh"><span>中文</span><span class="code">ZH</span></button>
+          <button type="button" data-lang="es"><span>Español</span><span class="code">ES</span></button>
+          <button type="button" data-lang="fr"><span>Français</span><span class="code">FR</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <div class="eyebrow" data-i18n="hero-eyebrow">EST. 2026 · 제주 · 가상 R&amp;D</div>
+
+  <h1 data-i18n="hero-h1">제주<span class="accent-orange">감귤</span><span class="accent-green">푸드테크</span><span class="accent-brown">랩스</span></h1>
+  <div class="hero-en" data-i18n="hero-en">Jeju Citrus FoodTech Labs</div>
+
+  <div class="hero-tag">
+    <span class="flower">✿</span>
+    <span data-i18n="hero-tag">감귤과 푸드테크의 유쾌한 만남</span>
+    <span class="flower">✿</span>
+  </div>
+
+  <div class="hero-emblem" aria-hidden="true">
+    <img src="logo-ko.png" alt="제주감귤푸드테크랩스 로고" />
+  </div>
+
+  <div class="hero-slogan" data-i18n="hero-slogan">제주의 감귤로, 더 건강한 내일을!</div>
+</section>
+
+<!-- ───── ABOUT ───── -->
+<section class="block" id="about">
+  <div class="section-head">
+    <div class="section-num">01 / ABOUT</div>
+    <h2 class="section-title" data-i18n="about-title">제주<span class="accent-orange">감귤</span><span class="accent-green">푸드테크</span><span class="accent-brown">랩스</span> 소개</h2>
+    <div class="section-en" data-i18n="about-en">About Jeju Citrus FoodTech Labs</div>
+  </div>
+
+  <p class="about-intro" data-i18n="about-intro">제주감귤푸드테크랩스는 감귤과 푸드테크가 만나는 <em>상상 속</em> 연구 브랜드입니다. 제주를 닮은 자연 친화적 감성과 미래지향적 기술 이미지를 결합해, 유쾌하고 창의적인 콘텐츠를 선보입니다.</p>
+
+  <div class="pillars">
+    <article class="pillar">
+      <div class="pillar-label">CONCEPT</div>
+      <h3 data-i18n="pillar-1-title">브랜드 콘셉트</h3>
+      <p data-i18n="pillar-1-text">감귤, 연구, 데이터, 디자인을 한데 묶은 <strong>패러디형 푸드테크 세계관</strong>.</p>
+    </article>
+    <article class="pillar">
+      <div class="pillar-label">VISION</div>
+      <h3 data-i18n="pillar-2-title">비전</h3>
+      <p data-i18n="pillar-2-text">제주의 상징인 감귤을 미래 식품·기술·창작 아이디어와 연결하는 <strong>상상 실험실</strong>.</p>
+    </article>
+    <article class="pillar">
+      <div class="pillar-label">KEYWORDS</div>
+      <h3 data-i18n="pillar-3-title">키워드</h3>
+      <p data-i18n="pillar-3-text">이 세계관을 이루는 일곱 단어.</p>
+      <div class="keyword-row" data-i18n="keywords">
+        <span class="kw">감귤</span><span class="kw">연구</span><span class="kw">실험</span><span class="kw">푸드테크</span><span class="kw">데이터</span><span class="kw">제주</span><span class="kw">창의성</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ───── RESEARCH ───── -->
+<section class="block" id="research">
+  <div class="section-head">
+    <div class="section-num">02 / LABS</div>
+    <h2 class="section-title" data-i18n="research-title"><span class="accent-orange">핵심</span> <span class="accent-green">연구</span> 분야</h2>
+    <div class="section-en" data-i18n="research-en">Key Research Areas</div>
+  </div>
+
+  <div class="research-grid">
+    <article class="research-card">
+      <div class="research-num">01</div>
+      <h3 data-i18n="r1-title">감귤 데이터 사이언스</h3>
+      <p data-i18n="r1-text">데이터와 분석을 통해 감귤의 가능성을 새롭게 해석합니다. 당도, 산도, 색도, 출하 시기까지 — 모두 가상의 차트로.</p>
+      <div class="tag-en" data-i18n="r1-en">— Citrus Data Science</div>
+    </article>
+    <article class="research-card">
+      <div class="research-num">02</div>
+      <h3 data-i18n="r2-title">푸드테크 연구개발</h3>
+      <p data-i18n="r2-text">식품과 기술의 접점을 상상하며 미래형 아이디어를 탐구합니다. 3D 프린팅 귤, 분자요리 마멀레이드 등.</p>
+      <div class="tag-en" data-i18n="r2-en">— FoodTech R&amp;D</div>
+    </article>
+    <article class="research-card">
+      <div class="research-num">03</div>
+      <h3 data-i18n="r3-title">제품화 &amp; 브랜드화</h3>
+      <p data-i18n="r3-text">아이디어를 콘텐츠와 제품 콘셉트로 발전시키는 <em>가상의 실험</em>을 진행합니다.</p>
+      <div class="tag-en" data-i18n="r3-en">— Product &amp; Branding</div>
+    </article>
+    <article class="research-card">
+      <div class="research-num">04</div>
+      <h3 data-i18n="r4-title">지속가능한 제주</h3>
+      <p data-i18n="r4-text">제주의 자연, 농업, 지역성을 존중하는 친환경적 관점을 담습니다. 풍력, 한라산, 돌하르방까지 안고서.</p>
+      <div class="tag-en" data-i18n="r4-en">— Sustainable Jeju</div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ───── STORY ───── -->
+<section class="block" id="story">
+  <div class="section-head">
+    <div class="section-num">03 / STORY</div>
+    <h2 class="section-title" data-i18n="story-title"><span class="accent-orange">프로젝트</span> <span class="accent-green">스토리</span></h2>
+    <div class="section-en" data-i18n="story-en">Project Story</div>
+  </div>
+
+  <div class="story-list">
+    <div class="story-row">
+      <div class="story-label"><span class="icon">🎨</span> <span data-i18n="story-1-label">우리가 만드는 것</span></div>
+      <div class="story-content" data-i18n="story-1-text">로고 · 포스터 · 설정집 · 브랜딩 · 캐릭터 · 이야기</div>
+    </div>
+    <div class="story-row">
+      <div class="story-label"><span class="icon">📖</span> <span data-i18n="story-2-label">이 사이트의 성격</span></div>
+      <div class="story-content" data-i18n="story-2-text">홍보용 콘셉트 페이지이자 <strong>패러디형 브랜드 소개서</strong></div>
+    </div>
+    <div class="story-row">
+      <div class="story-label"><span class="icon">💡</span> <span data-i18n="story-3-label">한 줄 슬로건</span></div>
+      <div class="story-content" data-i18n="story-3-text"><em>실존하는 메일, 허구의 세계관</em></div>
+    </div>
+    <div class="story-row">
+      <div class="story-label"><span class="icon">📣</span> <span data-i18n="story-4-label">브랜드 키 메시지</span></div>
+      <div class="story-content" data-i18n="story-4-text">감귤과 기술의 상상력을 유쾌하게 담아낸 <strong>제주감귤푸드테크랩스</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ───── CONTACT ───── -->
+<section class="block" id="contact">
+  <div class="section-head">
+    <div class="section-num">04 / CONTACT</div>
+    <h2 class="section-title" data-i18n="contact-title">문의 및 <span class="accent-orange">안내</span></h2>
+    <div class="section-en" data-i18n="contact-en">Contact Information</div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-seal" aria-hidden="true">
+      <img src="logo-en-seal.png" alt="" />
+    </div>
+    <div class="contact-rows">
+      <div class="contact-row">
+        <div class="contact-key" data-i18n="contact-email-label">Email</div>
+        <div class="contact-val mail">
+          <a href="mailto:lab@jejucitrusfoodtechletsgo.net">lab@jejucitrusfoodtechletsgo.net</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-key" data-i18n="contact-address-label">Address</div>
+        <div class="contact-val" data-i18n="contact-address">제주특별감귤자치도 제주감귤시 감귤동<br/>감귤연구단 11번지 제주감귤푸드테크랩스</div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-key" data-i18n="contact-website-label">Website</div>
+        <div class="contact-val">www.jejucitrusfoodtechletsgo.net</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Jeju Citrus FoodTech Labs</div>
+      <div class="foot-message" data-i18n="footer-message">감귤과 푸드테크의 상상력을 유쾌하게 담아낸 제주감귤푸드테크랩스.<br/>실존하는 메일, 허구의 세계관.</div>
+    </div>
+    <div class="foot-disclaimer" data-i18n="footer-disclaimer">© 2026 JEJU CITRUS FOODTECH LABS<br/>본 사이트는 개인용 패러디/테스트 목적입니다.<br/>This site is for personal parody/testing purposes.</div>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  ko: {
+    "page-title": "제주감귤푸드테크랩스 | Jeju Citrus FoodTech Labs",
+    "brand-short": "제주감귤푸드테크랩스",
+    "nav-about": "소개", "nav-labs": "연구", "nav-story": "스토리", "nav-news": "소식", "nav-contact": "문의",
+    "hero-eyebrow": "EST. 2026 · 제주 · 가상 R&amp;D",
+    "hero-h1": '제주<span class="accent-orange">감귤</span><span class="accent-green">푸드테크</span><span class="accent-brown">랩스</span>',
+    "hero-en": "Jeju Citrus FoodTech Labs",
+    "hero-tag": "감귤과 푸드테크의 유쾌한 만남",
+    "hero-slogan": "제주의 감귤로, 더 건강한 내일을!",
+    "about-title": '제주<span class="accent-orange">감귤</span><span class="accent-green">푸드테크</span><span class="accent-brown">랩스</span> 소개',
+    "about-en": "About Jeju Citrus FoodTech Labs",
+    "about-intro": "제주감귤푸드테크랩스는 감귤과 푸드테크가 만나는 <em>상상 속</em> 연구 브랜드입니다. 제주를 닮은 자연 친화적 감성과 미래지향적 기술 이미지를 결합해, 유쾌하고 창의적인 콘텐츠를 선보입니다.",
+    "pillar-1-title": "브랜드 콘셉트",
+    "pillar-1-text": "감귤, 연구, 데이터, 디자인을 한데 묶은 <strong>패러디형 푸드테크 세계관</strong>.",
+    "pillar-2-title": "비전",
+    "pillar-2-text": "제주의 상징인 감귤을 미래 식품·기술·창작 아이디어와 연결하는 <strong>상상 실험실</strong>.",
+    "pillar-3-title": "키워드",
+    "pillar-3-text": "이 세계관을 이루는 일곱 단어.",
+    "keywords": '<span class="kw">감귤</span><span class="kw">연구</span><span class="kw">실험</span><span class="kw">푸드테크</span><span class="kw">데이터</span><span class="kw">제주</span><span class="kw">창의성</span>',
+    "research-title": '<span class="accent-orange">핵심</span> <span class="accent-green">연구</span> 분야',
+    "research-en": "Key Research Areas",
+    "r1-title": "감귤 데이터 사이언스",
+    "r1-text": "데이터와 분석을 통해 감귤의 가능성을 새롭게 해석합니다. 당도, 산도, 색도, 출하 시기까지 — 모두 가상의 차트로.",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "푸드테크 연구개발",
+    "r2-text": "식품과 기술의 접점을 상상하며 미래형 아이디어를 탐구합니다. 3D 프린팅 귤, 분자요리 마멀레이드 등.",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "제품화 &amp; 브랜드화",
+    "r3-text": "아이디어를 콘텐츠와 제품 콘셉트로 발전시키는 <em>가상의 실험</em>을 진행합니다.",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "지속가능한 제주",
+    "r4-text": "제주의 자연, 농업, 지역성을 존중하는 친환경적 관점을 담습니다. 풍력, 한라산, 돌하르방까지 안고서.",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": '<span class="accent-orange">프로젝트</span> <span class="accent-green">스토리</span>',
+    "story-en": "Project Story",
+    "story-1-label": "우리가 만드는 것",
+    "story-1-text": "로고 · 포스터 · 설정집 · 브랜딩 · 캐릭터 · 이야기",
+    "story-2-label": "이 사이트의 성격",
+    "story-2-text": "홍보용 콘셉트 페이지이자 <strong>패러디형 브랜드 소개서</strong>",
+    "story-3-label": "한 줄 슬로건",
+    "story-3-text": "<em>실존하는 메일, 허구의 세계관</em>",
+    "story-4-label": "브랜드 키 메시지",
+    "story-4-text": "감귤과 기술의 상상력을 유쾌하게 담아낸 <strong>제주감귤푸드테크랩스</strong>",
+    "contact-title": '문의 및 <span class="accent-orange">안내</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "Email",
+    "contact-address-label": "Address",
+    "contact-website-label": "Website",
+    "contact-address": "제주특별감귤자치도 제주감귤시 감귤동<br/>감귤연구단 11번지 제주감귤푸드테크랩스",
+    "footer-message": "감귤과 푸드테크의 상상력을 유쾌하게 담아낸 제주감귤푸드테크랩스.<br/>실존하는 메일, 허구의 세계관.",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>본 사이트는 개인용 패러디/테스트 목적입니다."
+  },
+  en: {
+    "page-title": "Jeju Citrus FoodTech Labs",
+    "brand-short": "Jeju Citrus FoodTech Labs",
+    "nav-about": "About", "nav-labs": "Labs", "nav-story": "Story", "nav-news": "News", "nav-contact": "Contact",
+    "hero-eyebrow": "EST. 2026 · JEJU · IMAGINARY R&amp;D",
+    "hero-h1": 'Jeju <span class="accent-orange">Citrus</span> <span class="accent-green">FoodTech</span> <span class="accent-brown">Labs</span>',
+    "hero-en": "Where citrus meets the future",
+    "hero-tag": "A delightful meeting of citrus and food tech",
+    "hero-slogan": "With Jeju citrus, toward a healthier tomorrow!",
+    "about-title": 'About <span class="accent-orange">Citrus</span> <span class="accent-green">FoodTech</span> <span class="accent-brown">Labs</span>',
+    "about-en": "Where citrus meets food technology",
+    "about-intro": "Jeju Citrus FoodTech Labs is an <em>imaginary</em> research brand where citrus meets food technology. We blend Jeju's nature-inspired sensibility with futuristic tech imagery to present delightful, creative content.",
+    "pillar-1-title": "Brand Concept",
+    "pillar-1-text": "A <strong>parody food-tech universe</strong> binding citrus, research, data, and design into one.",
+    "pillar-2-title": "Vision",
+    "pillar-2-text": "An <strong>imaginary laboratory</strong> connecting Jeju's iconic citrus to ideas in future food, tech, and creation.",
+    "pillar-3-title": "Keywords",
+    "pillar-3-text": "The seven words that compose this universe.",
+    "keywords": '<span class="kw">citrus</span><span class="kw">research</span><span class="kw">experiment</span><span class="kw">foodtech</span><span class="kw">data</span><span class="kw">jeju</span><span class="kw">creativity</span>',
+    "research-title": '<span class="accent-orange">Key</span> <span class="accent-green">Research</span> Areas',
+    "research-en": "What we (imagine we) study",
+    "r1-title": "Citrus Data Science",
+    "r1-text": "Reinterpreting the potential of citrus through data and analysis. Sweetness, acidity, color, harvest timing — all in imaginary charts.",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "FoodTech R&amp;D",
+    "r2-text": "Exploring future-shaped ideas at the intersection of food and technology. 3D-printed tangerines, molecular marmalade, and beyond.",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "Product &amp; Branding",
+    "r3-text": "Running <em>imaginary experiments</em> that grow ideas into content and product concepts.",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "Sustainable Jeju",
+    "r4-text": "An eco-conscious perspective that honors Jeju's nature, agriculture, and locality — wind turbines, Hallasan, and Dol Hareubang included.",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": '<span class="accent-orange">Project</span> <span class="accent-green">Story</span>',
+    "story-en": "How this universe came to be",
+    "story-1-label": "What we make",
+    "story-1-text": "Logos · Posters · World-building books · Branding · Characters · Stories",
+    "story-2-label": "About this site",
+    "story-2-text": "A promotional concept page and <strong>parody brand introduction</strong>",
+    "story-3-label": "One-line slogan",
+    "story-3-text": "<em>Real email, fictional universe</em>",
+    "story-4-label": "Brand key message",
+    "story-4-text": "<strong>Jeju Citrus FoodTech Labs</strong> — capturing the imagination of citrus and tech with delight",
+    "contact-title": 'Contact &amp; <span class="accent-orange">Info</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "Email",
+    "contact-address-label": "Address",
+    "contact-website-label": "Website",
+    "contact-address": "11 Citrus Research Complex, Gamgyul-dong<br/>Jeju Citrus City, Special Citrus Self-Governing Province",
+    "footer-message": "Jeju Citrus FoodTech Labs — capturing the imagination of citrus and tech with delight.<br/>Real email, fictional universe.",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>This site is for personal parody/testing purposes."
+  },
+  ja: {
+    "page-title": "済州柑橘フードテックラボ",
+    "brand-short": "済州柑橘フードテックラボ",
+    "nav-about": "概要", "nav-labs": "研究", "nav-story": "ストーリー", "nav-news": "ニュース", "nav-contact": "お問合せ",
+    "hero-eyebrow": "EST. 2026 · 済州 · 仮想 R&amp;D",
+    "hero-h1": '済州<span class="accent-orange">柑橘</span><span class="accent-green">フードテック</span><span class="accent-brown">ラボ</span>',
+    "hero-en": "Jeju Citrus FoodTech Labs",
+    "hero-tag": "柑橘とフードテックの愉快な出会い",
+    "hero-slogan": "済州の柑橘で、もっと健やかな明日を！",
+    "about-title": '済州<span class="accent-orange">柑橘</span><span class="accent-green">フードテック</span><span class="accent-brown">ラボ</span> について',
+    "about-en": "About Jeju Citrus FoodTech Labs",
+    "about-intro": "済州柑橘フードテックラボは、柑橘とフードテックが出会う<em>想像上の</em>研究ブランドです。済州らしい自然に寄り添う感性と未来志向のテクノロジーを結びつけ、愉快で創造的なコンテンツをお届けします。",
+    "pillar-1-title": "ブランドコンセプト",
+    "pillar-1-text": "柑橘、研究、データ、デザインをひとつに束ねた<strong>パロディ風フードテック世界観</strong>。",
+    "pillar-2-title": "ビジョン",
+    "pillar-2-text": "済州の象徴である柑橘を、未来の食品・技術・創作アイデアと結ぶ<strong>想像の実験室</strong>。",
+    "pillar-3-title": "キーワード",
+    "pillar-3-text": "この世界観を構成する七つの言葉。",
+    "keywords": '<span class="kw">柑橘</span><span class="kw">研究</span><span class="kw">実験</span><span class="kw">フードテック</span><span class="kw">データ</span><span class="kw">済州</span><span class="kw">創造性</span>',
+    "research-title": '<span class="accent-orange">主要</span><span class="accent-green">研究</span>分野',
+    "research-en": "Key Research Areas",
+    "r1-title": "柑橘データサイエンス",
+    "r1-text": "データと分析を通じて柑橘の可能性を新たに解釈します。糖度、酸度、色度、出荷時期まで——すべて仮想のチャートで。",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "フードテック研究開発",
+    "r2-text": "食品と技術の接点を想像し、未来型のアイデアを探求します。3Dプリンティングみかん、分子料理マーマレードなど。",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "製品化 &amp; ブランド化",
+    "r3-text": "アイデアをコンテンツや製品コンセプトへ発展させる<em>仮想の実験</em>を行います。",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "持続可能な済州",
+    "r4-text": "済州の自然、農業、地域性を尊重するエコフレンドリーな視点を込めて。風力、漢拏山、ドルハルバンまで抱きしめて。",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": '<span class="accent-orange">プロジェクト</span><span class="accent-green">ストーリー</span>',
+    "story-en": "Project Story",
+    "story-1-label": "私たちが作るもの",
+    "story-1-text": "ロゴ · ポスター · 設定集 · ブランディング · キャラクター · 物語",
+    "story-2-label": "このサイトの性格",
+    "story-2-text": "宣伝用コンセプトページであり、<strong>パロディ風ブランド紹介書</strong>",
+    "story-3-label": "一行スローガン",
+    "story-3-text": "<em>実在するメール、架空の世界観</em>",
+    "story-4-label": "ブランドキーメッセージ",
+    "story-4-text": "柑橘と技術の想像力を愉快に込めた<strong>済州柑橘フードテックラボ</strong>",
+    "contact-title": 'お問い合わせ・<span class="accent-orange">ご案内</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "メール",
+    "contact-address-label": "住所",
+    "contact-website-label": "サイト",
+    "contact-address": "済州特別柑橘自治道 済州柑橘市 柑橘洞<br/>柑橘研究団 11番地 済州柑橘フードテックラボ",
+    "footer-message": "柑橘とテクノロジーの想像力を愉快に込めた済州柑橘フードテックラボ。<br/>実在するメール、架空の世界観。",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>本サイトは個人用パロディ／テスト目的です。"
+  },
+  zh: {
+    "page-title": "济州柑橘食品科技实验室",
+    "brand-short": "济州柑橘食品科技实验室",
+    "nav-about": "关于", "nav-labs": "实验室", "nav-story": "故事", "nav-news": "新闻", "nav-contact": "联系",
+    "hero-eyebrow": "EST. 2026 · 济州 · 虚拟 R&amp;D",
+    "hero-h1": '济州<span class="accent-orange">柑橘</span><span class="accent-green">食品科技</span><span class="accent-brown">实验室</span>',
+    "hero-en": "Jeju Citrus FoodTech Labs",
+    "hero-tag": "柑橘与食品科技的愉快邂逅",
+    "hero-slogan": "以济州柑橘，迎接更健康的明天！",
+    "about-title": '关于<span class="accent-orange">柑橘</span><span class="accent-green">食品科技</span><span class="accent-brown">实验室</span>',
+    "about-en": "About Jeju Citrus FoodTech Labs",
+    "about-intro": "济州柑橘食品科技实验室是一个柑橘与食品科技交汇的<em>想象</em>研究品牌。我们融合济州亲近自然的感性与面向未来的技术形象，呈现愉快又富有创意的内容。",
+    "pillar-1-title": "品牌概念",
+    "pillar-1-text": "将柑橘、研究、数据、设计融为一体的<strong>戏仿式食品科技世界观</strong>。",
+    "pillar-2-title": "愿景",
+    "pillar-2-text": "将济州象征——柑橘——与未来食品、技术与创作思想相连接的<strong>想象实验室</strong>。",
+    "pillar-3-title": "关键词",
+    "pillar-3-text": "构成此世界观的七个词。",
+    "keywords": '<span class="kw">柑橘</span><span class="kw">研究</span><span class="kw">实验</span><span class="kw">食品科技</span><span class="kw">数据</span><span class="kw">济州</span><span class="kw">创意</span>',
+    "research-title": '<span class="accent-orange">核心</span><span class="accent-green">研究</span>领域',
+    "research-en": "Key Research Areas",
+    "r1-title": "柑橘数据科学",
+    "r1-text": "通过数据与分析重新诠释柑橘的可能性。甜度、酸度、色度、上市时间——皆以虚构图表呈现。",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "食品科技研发",
+    "r2-text": "在食品与技术的交汇点想象未来型创意。3D 打印橘子、分子料理果酱等。",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "产品化 &amp; 品牌化",
+    "r3-text": "进行将创意发展为内容与产品概念的<em>虚拟实验</em>。",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "可持续济州",
+    "r4-text": "包含尊重济州自然、农业与地域性的环保视角。风力、汉拏山、石头爷爷皆怀抱在内。",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": '<span class="accent-orange">项目</span><span class="accent-green">故事</span>',
+    "story-en": "Project Story",
+    "story-1-label": "我们的创作",
+    "story-1-text": "标志 · 海报 · 设定集 · 品牌 · 角色 · 故事",
+    "story-2-label": "本网站性质",
+    "story-2-text": "推广用概念页面及<strong>戏仿式品牌介绍</strong>",
+    "story-3-label": "一句标语",
+    "story-3-text": "<em>真实的邮箱，虚构的世界观</em>",
+    "story-4-label": "品牌核心信息",
+    "story-4-text": "以愉快方式承载柑橘与技术之想象力的<strong>济州柑橘食品科技实验室</strong>",
+    "contact-title": '联系与<span class="accent-orange">咨询</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "邮箱",
+    "contact-address-label": "地址",
+    "contact-website-label": "网站",
+    "contact-address": "济州特别柑橘自治道 济州柑橘市 柑橘洞<br/>柑橘研究团 11号 济州柑橘食品科技实验室",
+    "footer-message": "以愉快方式承载柑橘与技术想象力的济州柑橘食品科技实验室。<br/>真实的邮箱，虚构的世界观。",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>本网站为个人戏仿／测试用途。"
+  },
+  es: {
+    "page-title": "Laboratorios FoodTech Cítricos de Jeju",
+    "brand-short": "Cítricos FoodTech Jeju",
+    "nav-about": "Nosotros", "nav-labs": "Labs", "nav-story": "Historia", "nav-news": "Noticias", "nav-contact": "Contacto",
+    "hero-eyebrow": "EST. 2026 · JEJU · I+D IMAGINARIO",
+    "hero-h1": '<span class="accent-brown">Laboratorios</span> <span class="accent-orange">Cítricos</span> <span class="accent-green">FoodTech</span> de Jeju',
+    "hero-en": "Donde los cítricos se encuentran con el futuro",
+    "hero-tag": "El alegre encuentro entre cítricos y tecnología alimentaria",
+    "hero-slogan": "¡Con cítricos de Jeju, hacia un mañana más saludable!",
+    "about-title": 'Acerca de <span class="accent-orange">Cítricos</span> <span class="accent-green">FoodTech</span>',
+    "about-en": "About Jeju Citrus FoodTech Labs",
+    "about-intro": "Laboratorios FoodTech Cítricos de Jeju es una marca de investigación <em>imaginaria</em> donde los cítricos se encuentran con la tecnología alimentaria. Combinamos la sensibilidad natural de Jeju con una estética tecnológica futurista para ofrecer contenido divertido y creativo.",
+    "pillar-1-title": "Concepto de Marca",
+    "pillar-1-text": "Un <strong>universo paródico de food-tech</strong> que une cítricos, investigación, datos y diseño.",
+    "pillar-2-title": "Visión",
+    "pillar-2-text": "Un <strong>laboratorio imaginario</strong> que conecta el cítrico símbolo de Jeju con ideas de alimentación, tecnología y creación del futuro.",
+    "pillar-3-title": "Palabras Clave",
+    "pillar-3-text": "Las siete palabras que componen este universo.",
+    "keywords": '<span class="kw">cítrico</span><span class="kw">investigación</span><span class="kw">experimento</span><span class="kw">foodtech</span><span class="kw">datos</span><span class="kw">jeju</span><span class="kw">creatividad</span>',
+    "research-title": 'Áreas <span class="accent-orange">Clave</span> de <span class="accent-green">Investigación</span>',
+    "research-en": "Key Research Areas",
+    "r1-title": "Ciencia de Datos Cítricos",
+    "r1-text": "Reinterpretando el potencial de los cítricos a través de datos y análisis. Dulzura, acidez, color y cosecha — todo en gráficos imaginarios.",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "I+D de FoodTech",
+    "r2-text": "Explorando ideas futuristas en el cruce entre alimentación y tecnología. Mandarinas en 3D, mermelada de gastronomía molecular y más.",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "Producto &amp; Marca",
+    "r3-text": "Realizamos <em>experimentos imaginarios</em> que convierten ideas en contenido y conceptos de producto.",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "Jeju Sostenible",
+    "r4-text": "Una perspectiva ecológica que respeta la naturaleza, agricultura y localidad de Jeju. Incluyendo turbinas eólicas, Hallasan y Dol Hareubang.",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": 'Historia del <span class="accent-orange">Proyecto</span>',
+    "story-en": "Project Story",
+    "story-1-label": "Lo que creamos",
+    "story-1-text": "Logos · Pósters · Libros de ambientación · Branding · Personajes · Historias",
+    "story-2-label": "Sobre este sitio",
+    "story-2-text": "Una página conceptual promocional y <strong>presentación de marca paródica</strong>",
+    "story-3-label": "Eslogan",
+    "story-3-text": "<em>Correo real, universo ficticio</em>",
+    "story-4-label": "Mensaje clave",
+    "story-4-text": "<strong>Laboratorios FoodTech Cítricos de Jeju</strong> — capturando la imaginación de los cítricos y la tecnología con alegría",
+    "contact-title": 'Contacto e <span class="accent-orange">Información</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "Email",
+    "contact-address-label": "Dirección",
+    "contact-website-label": "Web",
+    "contact-address": "Calle 11, Complejo de Investigación Cítrica, Gamgyul-dong<br/>Ciudad Cítrica de Jeju, Provincia Cítrica Autónoma Especial",
+    "footer-message": "Laboratorios FoodTech Cítricos de Jeju — capturando la imaginación de cítricos y tecnología con alegría.<br/>Correo real, universo ficticio.",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>Este sitio es para uso personal de parodia/prueba."
+  },
+  fr: {
+    "page-title": "Laboratoires FoodTech Agrumes de Jeju",
+    "brand-short": "Agrumes FoodTech Jeju",
+    "nav-about": "À propos", "nav-labs": "Labos", "nav-story": "Histoire", "nav-news": "Actus", "nav-contact": "Contact",
+    "hero-eyebrow": "EST. 2026 · JEJU · R&amp;D IMAGINAIRE",
+    "hero-h1": '<span class="accent-brown">Laboratoires</span> <span class="accent-orange">Agrumes</span> <span class="accent-green">FoodTech</span> de Jeju',
+    "hero-en": "Là où les agrumes rencontrent l'avenir",
+    "hero-tag": "La joyeuse rencontre entre agrumes et foodtech",
+    "hero-slogan": "Avec les agrumes de Jeju, vers un avenir plus sain !",
+    "about-title": 'À propos des <span class="accent-orange">Agrumes</span> <span class="accent-green">FoodTech</span>',
+    "about-en": "About Jeju Citrus FoodTech Labs",
+    "about-intro": "Laboratoires FoodTech Agrumes de Jeju est une marque de recherche <em>imaginaire</em> où les agrumes rencontrent la technologie alimentaire. Nous combinons la sensibilité naturelle de Jeju avec une imagerie technologique futuriste pour offrir des contenus joyeux et créatifs.",
+    "pillar-1-title": "Concept de Marque",
+    "pillar-1-text": "Un <strong>univers foodtech parodique</strong> réunissant agrumes, recherche, données et design.",
+    "pillar-2-title": "Vision",
+    "pillar-2-text": "Un <strong>laboratoire imaginaire</strong> reliant l'agrume emblématique de Jeju aux idées d'alimentation, de technologie et de création futures.",
+    "pillar-3-title": "Mots-Clés",
+    "pillar-3-text": "Les sept mots qui composent cet univers.",
+    "keywords": '<span class="kw">agrume</span><span class="kw">recherche</span><span class="kw">expérience</span><span class="kw">foodtech</span><span class="kw">données</span><span class="kw">jeju</span><span class="kw">créativité</span>',
+    "research-title": 'Domaines <span class="accent-orange">Clés</span> de <span class="accent-green">Recherche</span>',
+    "research-en": "Key Research Areas",
+    "r1-title": "Science des Données Agrumes",
+    "r1-text": "Réinterpréter le potentiel des agrumes par les données et l'analyse. Sucre, acidité, couleur, saison — le tout en graphiques imaginaires.",
+    "r1-en": "— Citrus Data Science",
+    "r2-title": "R&amp;D FoodTech",
+    "r2-text": "Explorer des idées futuristes au croisement de l'alimentation et de la technologie. Mandarines imprimées en 3D, marmelade de gastronomie moléculaire et plus encore.",
+    "r2-en": "— FoodTech R&amp;D",
+    "r3-title": "Produit &amp; Branding",
+    "r3-text": "Nous menons des <em>expériences imaginaires</em> qui transforment les idées en contenu et concepts de produits.",
+    "r3-en": "— Product &amp; Branding",
+    "r4-title": "Jeju Durable",
+    "r4-text": "Une perspective écologique qui respecte la nature, l'agriculture et la localité de Jeju. Éoliennes, Hallasan et Dol Hareubang inclus.",
+    "r4-en": "— Sustainable Jeju",
+    "story-title": 'Histoire du <span class="accent-orange">Projet</span>',
+    "story-en": "Project Story",
+    "story-1-label": "Ce que nous créons",
+    "story-1-text": "Logos · Affiches · Livres d'univers · Branding · Personnages · Histoires",
+    "story-2-label": "À propos de ce site",
+    "story-2-text": "Une page conceptuelle promotionnelle et <strong>présentation de marque parodique</strong>",
+    "story-3-label": "Slogan",
+    "story-3-text": "<em>E-mail réel, univers fictif</em>",
+    "story-4-label": "Message clé",
+    "story-4-text": "<strong>Laboratoires FoodTech Agrumes de Jeju</strong> — capturant l'imagination des agrumes et de la tech avec joie",
+    "contact-title": 'Contact et <span class="accent-orange">Infos</span>',
+    "contact-en": "Contact Information",
+    "contact-email-label": "Email",
+    "contact-address-label": "Adresse",
+    "contact-website-label": "Site",
+    "contact-address": "11 Complexe de Recherche Agrumes, Gamgyul-dong<br/>Ville Citrus de Jeju, Province Autonome Spéciale des Agrumes",
+    "footer-message": "Laboratoires FoodTech Agrumes de Jeju — capturant l'imagination des agrumes et de la tech avec joie.<br/>E-mail réel, univers fictif.",
+    "footer-disclaimer": "© 2026 JEJU CITRUS FOODTECH LABS<br/>Ce site est à usage personnel parodique/test."
+  }
+};
+
+const langPicker = document.querySelector('.lang');
+const langBtn = langPicker.querySelector('.lang-btn');
+const langCurrent = document.getElementById('lang-current');
+const langOptions = langPicker.querySelectorAll('[data-lang]');
+
+function setLang(lang) {
+  if (!i18n[lang]) lang = 'ko';
+  const dict = i18n[lang];
+
+  document.body.classList.add('lang-switching');
+
+  setTimeout(() => {
+    document.documentElement.lang = lang;
+    document.title = dict['page-title'];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    langCurrent.textContent = lang.toUpperCase();
+    langOptions.forEach(btn => {
+      btn.setAttribute('aria-current', btn.dataset.lang === lang ? 'true' : 'false');
+    });
+
+    try { localStorage.setItem('jcftl_lang', lang); } catch(e) {}
+
+    requestAnimationFrame(() => {
+      document.body.classList.remove('lang-switching');
+    });
+  }, 200);
+}
+
+langBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const open = langPicker.dataset.open === 'true';
+  langPicker.dataset.open = open ? 'false' : 'true';
+});
+
+langOptions.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setLang(btn.dataset.lang);
+    langPicker.dataset.open = 'false';
+  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!langPicker.contains(e.target)) {
+    langPicker.dataset.open = 'false';
+  }
+});
+
+// init from saved or browser preference
+let initLang = 'ko';
+try {
+  const saved = localStorage.getItem('jcftl_lang');
+  if (saved && i18n[saved]) {
+    initLang = saved;
+  } else {
+    const browserLang = (navigator.language || 'ko').slice(0, 2).toLowerCase();
+    if (i18n[browserLang]) initLang = browserLang;
+  }
+} catch(e) {}
+if (initLang !== 'ko') setLang(initLang);
+</script>
+
+</body>
+</html>
